@@ -22,7 +22,7 @@ Route::post('/endpoint', function (Request $request) {
         return [
             'status' => 404,
             'message' => 'No model found.',
-            'destination' => config('nova.url') . config('nova.path') . '/resources/' . $request->resource . '/'
+            'destination' => url(config('nova.url') . config('nova.path') . 'resources/' . $request->resource . '/')
         ];
     }
 
@@ -57,6 +57,6 @@ Route::post('/endpoint', function (Request $request) {
     return [
         'status' => 200,
         'message' => 'Done',
-        'destination' => url(config('nova.path') . '/resources/' . $request->resource . '/' . $newModel->id)
+        'destination' => url(config('nova.url') . config('nova.path') . 'resources/' . $request->resource . '/' . $newModel->id)
     ];
 });
